@@ -1,0 +1,13 @@
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+
+cc_binary(
+    name = "my_calculator",
+    srcs = ["main.cpp"],
+    deps = [
+        "//srcs/add:add",
+        "//srcs/sub:sub",
+        "//srcs/multi:multi",
+        "//srcs/div:div",
+    ]
+    # If the deps are not added then the relevant headers can't be found
+)

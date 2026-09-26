@@ -1,0 +1,2 @@
+# Use the bazel registry for most up to date version -> https://registry.bazel.build/modules/rules_cc
+bazel_dep(name = "rules_cc", version = "0.2.25")
