@@ -20,7 +20,7 @@ def _greet_impl(ctx):
 greet = rule(
     implementation = _greet_impl,
     attrs = {
-        "person": attr.string(default = "unknown"),
+        "person": attr.string(default = "Unknown"),
         # https://bazel.build/rules/lib/toplevel/attr#string
         # If we want to force a 'person' to be passed as an arg we can enable 'mandatory = True'
     }
