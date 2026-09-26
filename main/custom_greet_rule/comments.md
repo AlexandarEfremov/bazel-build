@@ -23,4 +23,4 @@ Hi there, James!
 Hi there, Unknown!
 ```
 
-As we can see bazel used the 'person' attr where it could and defaulted to 'Unknown' where it wasn't provided.
+As we can see bazel used the `person` attr where it could and defaulted to `Unknown` where it wasn't provided.
