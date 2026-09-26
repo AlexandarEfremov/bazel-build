@@ -1,0 +1,19 @@
+load("//srcs:rules.bzl", "greet")
+# 'srcs' is a subpackage of 'custom_greet_rule'
+
+# Using 'name' for the attribute conflicts with the actual rule name so i
+# choose 'person'
+greet(
+    name = "hello_alex",
+    person = "Alex",
+)
+
+greet(
+    name = "hello_james",
+    person = "James",
+)
+
+greet(
+    name = "hello_nobody",
+    # person = "",
+)

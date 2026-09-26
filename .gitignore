@@ -1,0 +1,3 @@
+MODULE.bazel.lock
+main/**/bazel*
+!main/**/bazel-bin
