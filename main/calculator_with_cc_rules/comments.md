@@ -15,7 +15,7 @@ The native `cc_library` rule produces always `.so` and `.a` files for linking.
 
 To be more specific in execution we can use `cc_shared_library` or `cc_static_library`.
 
-**Note about `srcs` vs `hdrs`. As far as the bazel docs go whenever headers are directly
+**Note** about `srcs` vs `hdrs`. As far as the bazel docs go whenever headers are directly
 included in source code we can place them in `srcs`.
 
 ## Run
@@ -27,7 +27,7 @@ bazel build //...
 ./my_calculator
 ```
 
-**Some examples
+**Some examples**
 ```bash
 Enter two integer numbers: 4 5
 Enter an operation (+ - / *): /
