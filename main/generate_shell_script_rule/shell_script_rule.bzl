@@ -7,6 +7,7 @@ printf '\n\n\t\tThis is my executable script output. Hope you liked it :D\n\n'
     ctx.actions.write(
         output = output_file,
         content = script_content,
+        is_executable = True,
     )
 
     return [
