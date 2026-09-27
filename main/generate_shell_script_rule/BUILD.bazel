@@ -1,0 +1,5 @@
+load("//:shell_script_rule.bzl", "generate_shell_script")
+
+generate_shell_script(
+    name = "my_gen_script",
+)
