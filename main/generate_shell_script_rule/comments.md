@@ -5,7 +5,7 @@ Executable scripts can be directly started with the following command:
 bazel run //...
 ```
 
-In our example we have two points of failure:
+In our example we have two potential points of failure:
 - Returning a non executable:
 
 ```python
