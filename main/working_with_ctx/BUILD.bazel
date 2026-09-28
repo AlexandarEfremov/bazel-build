@@ -1,0 +1,5 @@
+load("//:rules/example.bzl", "mish_mash")
+
+mish_mash(
+    name = "generation_one"
+)
