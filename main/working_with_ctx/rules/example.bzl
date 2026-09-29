@@ -1,31 +1,33 @@
-def _mish_mash_impl(ctx):
-    output_file = ctx.actions.declare_file("Mish")
-    output_file_two = ctx.actions.declare_file("Mosh")
-    output_dir = ctx.actions.declare_directory("Mash")
+def _create_directory(ctx):
+    output_dir = ctx.actions.declare_directory(ctx.attr.directory_name + "_dir")
+    dir_path = output_dir.path
 
-    ctx.actions.write(
-        output = output_file,
-        content = "Cheese & Tomatoes"
-    )
+    args = ctx.actions.args()
+    all_files = []
 
-    ctx.actions.write(
-        output = output_file_two,
-        content = "Mac & Cheese"
-    )
+    for file in ctx.attr.files:
+        current_file = ctx.actions.declare_file(file)
+        ctx.actions.write(
+            output = current_file,
+            content = "Nada",
+        )
 
-    # WIP
+        all_files.append(current_file)
 
-    my_files = ctx.actions.args()
-    my_files.add_all(depset([output_file, output_file_two]))
-    ctx.actions.write(
-        output = output_dir,
-        content = my_files
+    ctx.actions.run_shell(
+        outputs = [output_dir],
+        arguments = [args],
+        command = "echo HI",
     )
 
     return DefaultInfo(
-        files = depset([output_file, output_dir])
+        files = depset([all_files])
     )
 
-mish_mash = rule(
-    implementation = _mish_mash_impl
+create_directory = rule(
+    implementation = _create_directory,
+    attrs = {
+        "directory_name": attr.string(),
+        "files": attr.string_list(),
+    }
 )
