@@ -1,33 +1,34 @@
 def _create_directory(ctx):
-    output_dir = ctx.actions.declare_directory(ctx.attr.directory_name + "_dir")
-    dir_path = output_dir.path
+    out = ctx.actions.declare_directory(ctx.attr.dirname + "_dir")
+    print(out)
 
-    args = ctx.actions.args()
-    all_files = []
-
-    for file in ctx.attr.files:
-        current_file = ctx.actions.declare_file(file)
-        ctx.actions.write(
-            output = current_file,
-            content = "Nada",
-        )
-
-        all_files.append(current_file)
+    # ctx.actions.run_shell(
+    #     outputs = [outputs],
+    #     command = "mkdir {dir} && echo {dir}_dir was successfully created".format(dir = ctx.attr.dirname),
+    # )
 
     ctx.actions.run_shell(
-        outputs = [output_dir],
-        arguments = [args],
-        command = "echo HI",
+        inputs = 
+        outputs = [out],
+        command = "mkdir -p {dir} && touch {dir}/first_file.txt".format(dir = ctx.attr.dirname)
     )
-
-    return DefaultInfo(
-        files = depset([all_files])
-    )
+    # ctx.actions.run(
+    #     executable = "bash",
+    #     arguments = ["-c", "mkdir -p %s/pear && touch %s/pear/grape" % (out.path, out.path)],
+    #     outputs = [out],
+    # )
+    return [
+        DefaultInfo(
+            files = depset([out]),
+        ),
+    ]
 
 create_directory = rule(
     implementation = _create_directory,
     attrs = {
-        "directory_name": attr.string(),
-        "files": attr.string_list(),
+        "dirname": attr.string(
+            mandatory = True,
+            doc = "The name of the directory"
+        ),
     }
 )

@@ -1,12 +1,6 @@
 load("//:rules/example.bzl", "create_directory")
 
 create_directory(
-    name = "test",
-    directory_name = "big_boss",
-    files = [
-        "first",
-        "second",
-        "third",
-        "fourth",
-    ]
+    name = "dir_generator",
+    dirname = "first"
 )
