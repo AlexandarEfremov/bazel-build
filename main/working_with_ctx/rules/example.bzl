@@ -1,34 +1,29 @@
 def _create_directory(ctx):
-    out = ctx.actions.declare_directory(ctx.attr.dirname + "_dir")
-    print(out)
+    # label name is taken directly from the name of the target
+    out = ctx.actions.declare_directory(ctx.label.name + "_dir")
+    script = ctx.actions.declare_file(ctx.label.name + ".sh")
+    cmds = "mkdir -p {dirname}".format(dirname = out.path)
 
-    # ctx.actions.run_shell(
-    #     outputs = [outputs],
-    #     command = "mkdir {dir} && echo {dir}_dir was successfully created".format(dir = ctx.attr.dirname),
-    # )
-
-    ctx.actions.run_shell(
-        inputs = 
-        outputs = [out],
-        command = "mkdir -p {dir} && touch {dir}/first_file.txt".format(dir = ctx.attr.dirname)
+    ctx.actions.write(
+        output = script,
+        content = cmds,
     )
-    # ctx.actions.run(
-    #     executable = "bash",
-    #     arguments = ["-c", "mkdir -p %s/pear && touch %s/pear/grape" % (out.path, out.path)],
-    #     outputs = [out],
-    # )
-    return [
-        DefaultInfo(
-            files = depset([out]),
-        ),
-    ]
+
+    # All code examples ive seen use 'run' I havent seen a single declare dir done
+    # with run_shell. It kind of defeats the purpose because inputs and outputs are 
+    # basically the same
+    ctx.actions.run(
+        executable = script,
+        outputs = [out],
+    )
+    return [DefaultInfo(files = depset([out]))]
+
 
 create_directory = rule(
     implementation = _create_directory,
-    attrs = {
-        "dirname": attr.string(
-            mandatory = True,
-            doc = "The name of the directory"
-        ),
-    }
 )
+
+# TODO tidy up and create comments.md
+# TODO extend to use files (explore how they can be dynamically passed to depset)
+# TODO experiment with labels
+# TODO experiment with nested folder structures
