@@ -2,4 +2,9 @@ load("//:rules/example.bzl", "create_directory")
 
 create_directory(
     name = "first_test",
+    files = [
+        "first.txt",
+        "second.txt",
+        "third.txt",
+    ]
 )
