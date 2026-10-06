@@ -1,33 +1,12 @@
 def _create_directory(ctx):
-    # out = ctx.actions.declare_directory(ctx.label.name + "_dir")
-    out_files = []
-    args = ctx.actions.args()
-
-    # TODO finish script so that the files can be moved in the directory
-    # TODO clean up
-    for file in ctx.attr.files:
-        out_file = ctx.actions.declare_file(file.replace(".txt", ".out"))
-        # ctx.actions.write(
-        #     output = out_file,
-        #     content = "This is {file}".format(file = file)
-        # )
-        out_files.append(out_file)
-
-    args.add_all(out_files)
-    ctx.actions.run_shell(
-        outputs = out_files,
-        arguments = [args],
-        # command = "mkdir -p {dirname} && touch $1".format(dirname = out.path, parent_dir = out.dirname),
-        command = ''
-    )
-    # print(out_files)
+    out = ctx.actions.declare_directory(ctx.label.name + "_dir")
     
-    # depset has to be passed the list of outputs, were I to pass [output, [something]]
-    # it would fail as it's mutable
+    ctx.actions.run_shell(
+        outputs = [out],
+        command = "",
+    )
 
-    # out_files.append(out)
-    return [DefaultInfo(files = depset(out_files))]
-
+    return DefaultInfo(files = depset([out]))
 
 create_directory = rule(
     implementation = _create_directory,
