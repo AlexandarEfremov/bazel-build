@@ -1,0 +1,9 @@
+load(":templater.bzl", "lang_templater")
+
+lang_templater(
+    name = "template_one",
+    username = "Alex",
+    language = "BG",
+    time = "00:07",
+    template = "//templates:bulgarian.txt",
+)

@@ -1,0 +1,1 @@
+exports_files(["bulgarian.txt", "english.txt", "polish.txt"])
