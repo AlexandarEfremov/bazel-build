@@ -1,0 +1,2 @@
+## Observations
+This turned out pretty much like 'custom_greet-rule' with the exception that I used labels on the strings. This gives the user immediate access to files, however I'm not quite sure yet whats the direct advantage as files still need to be declared and generated. Will comment, once I understand more.
