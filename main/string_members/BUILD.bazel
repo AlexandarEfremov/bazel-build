@@ -1,0 +1,14 @@
+load(":str_rule.bzl", "string_members")
+
+string_members(
+    name = "strs",
+    strs = [
+        "first",
+        "FIFRST",
+        "weIRd",
+        "lazt",
+        "alexanderthegreat",
+        "BUILD.bazel",
+        "test.if.i.can.split.this",
+    ]
+)
