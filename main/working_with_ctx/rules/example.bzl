@@ -22,8 +22,3 @@ create_directory = rule(
         )
     }
 )
-
-# TODO extend to use files (explore how they can be dynamically passed to depset)
-# TODO explore the string members https://bazel.build/rules/lib/core/string#attr
-# TODO experiment with labels
-# TODO experiment with nested folder structures
