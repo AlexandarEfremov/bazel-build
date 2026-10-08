@@ -17,23 +17,13 @@ lang_templater = rule(
         "username": attr.string(
             default = "N/A"
         ),
-        "language": attr.string(
-            mandatory = True,
-        ),
         "time": attr.string(
             default = "N/A",
         ),
         "template": attr.label(
             allow_single_file = True,
-            # allow_files = [
-            #     "bulgarian.txt",
-            #     "english.txt",
-            #     "polish.txt",
-            # ],
-            mandatory = True,
+            mandatory = False,
+            default = "//templates:generic.txt",
         )
     }
 )
-
-#TODO current implementation works, but needs cleaning
-#TODO consider doing a long bash script with substitutions, this is where it shines

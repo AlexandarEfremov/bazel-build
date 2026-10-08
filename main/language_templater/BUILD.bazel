@@ -1,9 +1,21 @@
 load(":templater.bzl", "lang_templater")
 
 lang_templater(
-    name = "template_one",
-    username = "Alex",
-    language = "BG",
-    time = "00:07",
+    name = "file_one",
+    username = "George",
+    time = "18:07",
+    template = "//templates:english.txt",
+)
+
+lang_templater(
+    name = "file_two",
+    username = "Grzegorz",
+    time = "00:15",
+    template = "//templates:polish.txt",
+)
+lang_templater(
+    name = "file_three",
+    username = "Георги",
+    time = "13:22",
     template = "//templates:bulgarian.txt",
 )

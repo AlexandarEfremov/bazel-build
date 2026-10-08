@@ -1,1 +1,1 @@
-exports_files(["bulgarian.txt", "english.txt", "polish.txt"])
+exports_files(["bulgarian.txt", "english.txt", "polish.txt", "generic.txt"])

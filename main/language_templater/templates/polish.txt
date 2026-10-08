@@ -1,1 +1,1 @@
-Witaj, {NAME}! Godzina jest {TIME}.
+Witaj, {NAME}! Jest godzina {TIME}.
