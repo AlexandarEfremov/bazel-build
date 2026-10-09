@@ -1,7 +1,8 @@
 load("@rules_python//python:defs.bzl", "py_binary")
 
+
 py_binary(
-    name = "prof_to_spread",
-    imports = ["openpyxl"],
-    srcs = ["prof_to_spread.py"],
+    name = "hello-bin",
+    srcs = ["//py_source:hello.py"],
+    main = "hello.py" #entry point i.e. which file contains if name == main
 )
