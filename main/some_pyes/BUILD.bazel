@@ -1,8 +1,0 @@
-load("@rules_python//python:defs.bzl", "py_binary")
-
-
-py_binary(
-    name = "hello-bin",
-    srcs = ["//py_source:hello.py"],
-    main = "hello.py" #entry point i.e. which file contains if name == main
-)

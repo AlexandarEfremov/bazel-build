@@ -1,4 +1,0 @@
-exports_files([
-    "prof_to_spread.py",
-    "hello.py",
-])
