@@ -51,9 +51,24 @@ bazel query --noimplicit_deps 'deps(//cafe:main)'
 //ingredients:ethiopian_beans.py
 //ingredients:milk
 //ingredients:milk.py
+@@platforms//os:os
+@@platforms//os:windows
+@rules_python//command_line_option:enable_runfiles
+@rules_python//python:none
+@rules_python//python/private:sentinel
 ```
 
-Note some of them still go through like for the OS and runfiles.
+Note some of them still go through like for the OS and runfiles and sentinel.
+
+This is actually a great opportunity to demonstrate `somepath()`
+In situations where we don't see what's connecting two targets we can use `somepath()`
+
+```bash
+bazel query 'somepath(//cafe:main, @rules_python//python/private:sentinel)'
+//cafe:main
+@rules_python//python/private:uncachable_version_file <--- This is the connector target
+@rules_python//python/private:sentinel
+```
 
 ### Targets that depend on another target (reverse dependency)
 Let's say we want to find out how many other targets are using our arabica beans.
