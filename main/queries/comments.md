@@ -76,3 +76,36 @@ bazel query 'attr(tags, "Cappuccino", //customers/...)'
 ```
 
 With this query we can print out everyone using the specified `tags` attribute.
+
+### Using the action query.
+Action queries or `aquery` for short is very useful if we want to inspect a target in the POST-analysis phase.
+**Note** `aquery` outputs a wall of artifacts, which I usually disable:
+
+```bash
+bazel aquery //ingredients:milk --noinclude_artifacts
+
+INFO: Analyzed target //ingredients:milk (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+action 'Python precompiling bin/python3 into ingredients/__pycache__/milk.cpython-314.pyc'
+  Mnemonic: PyCompile
+  Target: //ingredients:milk
+  Configuration: k8-fastbuild
+  Execution platform: @@platforms//host:host
+  ActionKey: ################################################################
+  Environment: [PYTHONHASHSEED=0, PYTHONNOUSERSITE=1, PYTHONSAFEPATH=1]
+  Command Line: (exec external/rules_python++python+python_3_14_x86_64-unknown-linux-gnu/bin/python3 \
+    bazel-out/k8-opt-exec/bin/external/rules_python+/tools/precompiler/precompiler_.py \
+    --invalidation_mode \
+    checked_hash \
+    --src \
+    ingredients/milk.py \
+    --src_name \
+    ingredients/milk.py \
+    --pyc \
+    bazel-out/k8-fastbuild/bin/ingredients/__pycache__/milk.cpython-314.pyc \
+    --optimize \
+    0 \
+    --python_version \
+    3.14)
+    ...
+```
