@@ -1,0 +1,16 @@
+load("@rules_python//python:py_binary.bzl", "py_binary")
+
+py_binary(
+    name = "main",
+    srcs = ["main.py"],
+    deps = [
+        "//coffee_types:americano",
+        "//coffee_types:cappuccino",
+        "//customers:Alex",
+        "//customers:Ewcia",
+        "//ingredients:milk",
+        "//ingredients:arabica_beans",
+        "//ingredients:ethiopian_beans",
+    ],
+    visibility = ["//visibility:public"],
+)

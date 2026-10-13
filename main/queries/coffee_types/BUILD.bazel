@@ -5,7 +5,7 @@ py_library(
     srcs = ["americano.py"],
     visibility = ["//visibility:public"],
     deps = [
-        "//py_query_quickstart_cafe/ingredients:arabica_beans",
+        "//ingredients:arabica_beans",
     ]
 )
 
@@ -14,8 +14,8 @@ py_library(
     srcs = ["cappuccino.py"],
     visibility = ["//visibility:public"],
     deps = [
-        "//py_query_quickstart_cafe/ingredients:milk",
-        "//py_query_quickstart_cafe/ingredients:ethiopian_beans",
+        "//ingredients:milk",
+        "//ingredients:ethiopian_beans",
     ]
 )
 
