@@ -13,3 +13,10 @@ py_library(
     tags = ["Cappuccino"],
     visibility = ["//visibility:public"],
 )
+
+py_library(
+    name = "Ron",
+    srcs = ["ron.py"],
+    tags = ["Cappuccino"],
+    visibility = ["//visibility:public"],
+)

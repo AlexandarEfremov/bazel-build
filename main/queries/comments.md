@@ -65,3 +65,14 @@ bazel query 'rdeps(//..., //ingredients:arabica_beans)'
 //ingredients:arabica_beans
 ```
 So not counting itself we have 2 other targets that have a dependency to `arabica_beans`
+
+### Find targets by using specific attributes (tags)
+We have two customers that like drinking `Cappuccino`, but what if there are hundreds?
+
+```bash
+bazel query 'attr(tags, "Cappuccino", //customers/...)'
+//customers:Ewcia
+//customers:Ron
+```
+
+With this query we can print out everyone using the specified `tags` attribute.
