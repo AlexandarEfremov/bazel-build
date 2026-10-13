@@ -66,9 +66,23 @@ In situations where we don't see what's connecting two targets we can use `somep
 ```bash
 bazel query 'somepath(//cafe:main, @rules_python//python/private:sentinel)'
 //cafe:main
-@rules_python//python/private:uncachable_version_file <--- This is the connector target
+@rules_python//python/private:uncachable_version_file <--- This is a connector target
 @rules_python//python/private:sentinel
 ```
+**Note** The target here is selected at random. To get the full picture in scenarios with
+multiple dependencies we would need `allpaths()`.
+
+```bash
+bazel query 'allpaths(//cafe:main, @rules_python//python/private:sentinel)'
+//cafe:main
+@rules_python//command_line_option:enable_runfiles
+@rules_python//python:none
+@rules_python//python/private:sentinel
+@rules_python//python/private:uncachable_version_file
+@rules_python//tools/zipapp:exe_zip_maker
+```
+
+Now we can see the full path taken.
 
 ### Targets that depend on another target (reverse dependency)
 Let's say we want to find out how many other targets are using our arabica beans.
