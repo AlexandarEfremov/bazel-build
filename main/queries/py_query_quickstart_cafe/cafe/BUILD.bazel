@@ -1,0 +1,16 @@
+load("@rules_python//python:py_binary.bzl", "py_binary")
+
+py_binary(
+    name = "main",
+    srcs = ["main.py"],
+    deps = [
+        "//py_query_quickstart_cafe/coffee_types:americano",
+        "//py_query_quickstart_cafe/coffee_types:cappuccino",
+        "//py_query_quickstart_cafe/customers:Alex",
+        "//py_query_quickstart_cafe/customers:Ewcia",
+        "//py_query_quickstart_cafe/ingredients:milk",
+        "//py_query_quickstart_cafe/ingredients:arabica_beans",
+        "//py_query_quickstart_cafe/ingredients:ethiopian_beans",
+    ],
+    visibility = ["//visibility:public"],
+)

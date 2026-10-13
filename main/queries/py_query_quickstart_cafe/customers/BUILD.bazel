@@ -1,0 +1,15 @@
+load("@rules_python//python:py_library.bzl", "py_library")
+
+py_library(
+    name = "Alex",
+    srcs = ["alex.py"],
+    tags = ["Americano"],
+    visibility = ["//visibility:public"],
+)
+
+py_library(
+    name = "Ewcia",
+    srcs = ["ewcia.py"],
+    tags = ["Cappuccino"],
+    visibility = ["//visibility:public"],
+)

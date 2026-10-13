@@ -1,0 +1,21 @@
+load("@rules_python//python:py_library.bzl", "py_library")
+
+py_library(
+    name = "americano",
+    srcs = ["americano.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//py_query_quickstart_cafe/ingredients:arabica_beans",
+    ]
+)
+
+py_library(
+    name = "cappuccino",
+    srcs = ["cappuccino.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//py_query_quickstart_cafe/ingredients:milk",
+        "//py_query_quickstart_cafe/ingredients:ethiopian_beans",
+    ]
+)
+

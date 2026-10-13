@@ -1,0 +1,9 @@
+bazel_dep(name = "rules_python", version = "2.4.2")
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pypi",
+    python_version = "3.14",
+    requirements_lock = "//:requirements.txt",
+)
+use_repo(pip, "pypi")

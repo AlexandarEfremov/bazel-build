@@ -1,0 +1,1 @@
+print("Welcome to our family cafe!\nWe're serving Americanos and Cappuccinos!")

@@ -1,0 +1,19 @@
+load("@rules_python//python:py_library.bzl", "py_library")
+
+py_library(
+    name = "milk",
+    srcs = ["milk.py"],
+    visibility = ["//visibility:public"]
+)
+
+py_library(
+    name = "arabica_beans",
+    srcs = ["arabica_beans.py"],
+    visibility = ["//visibility:public"]
+)
+
+py_library(
+    name = "ethiopian_beans",
+    srcs = ["ethiopian_beans.py"],
+    visibility = ["//visibility:public"]
+)
