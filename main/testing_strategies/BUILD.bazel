@@ -1,0 +1,8 @@
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+
+sh_test(
+    name = "unit_test",
+    srcs = ["run_unit_test.sh"],
+    tags = ["external"],
+    # External advises bazel not to cache any results, even for passed tests.
+)
