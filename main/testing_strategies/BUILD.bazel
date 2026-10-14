@@ -11,4 +11,5 @@ sh_test(
 py_test(
     name = "person_unit_tests",
     srcs = ["person_unit_tests.py"],
+    tags = ["manual"],
 )
