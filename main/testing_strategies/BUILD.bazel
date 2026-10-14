@@ -1,3 +1,4 @@
+load("@rules_python//python:defs.bzl", "py_test")
 load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
 sh_test(
@@ -5,4 +6,9 @@ sh_test(
     srcs = ["run_unit_test.sh"],
     tags = ["external"],
     # External advises bazel not to cache any results, even for passed tests.
+)
+
+py_test(
+    name = "person_unit_tests",
+    srcs = ["person_unit_tests.py"],
 )
