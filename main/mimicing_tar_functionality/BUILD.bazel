@@ -1,0 +1,7 @@
+load(":tar.bzl", "create_tarball")
+
+create_tarball(
+    name = "archive_target",
+    src = "results.txt",
+    out = "results.tar",
+)
