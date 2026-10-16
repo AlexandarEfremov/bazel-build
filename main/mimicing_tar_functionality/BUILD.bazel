@@ -1,7 +1,12 @@
-load(":tar.bzl", "create_tarball")
+load(":tar.bzl", "create_tarball", "read_tarball")
 
 create_tarball(
     name = "archive_target",
     src = "results.txt",
     out = "results.tar",
+)
+
+read_tarball(
+    name = "read_target",
+    src = ":archive_target",
 )

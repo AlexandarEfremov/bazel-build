@@ -27,16 +27,27 @@ create_tarball = rule(
     }
 )
 
-def _extract_from_tarball(ctx):
-    src = ctx.file.src
-    ctx.file.src.basename
-    # out = ctx.actions.declare_file(sr)
+def _read_tarball(ctx):
+    src = ctx.file.src #results.tar
+    output_dir = ctx.actions.declare_directory("out_tar")
+    args = ctx.actions.args()
 
-extract_from_tarball = rule(
-    implementation = _extract_from_tarball,
+    args.add("-tvf")
+    args.add(src)
+
+    ctx.actions.run(
+        executable = "tar",
+        arguments = [args],
+        inputs = [src],
+        outputs = [output_dir],
+        use_default_shell_env = True,
+    )
+
+    return DefaultInfo(files = depset([output_dir]))
+
+read_tarball = rule(
+    implementation = _read_tarball,
     attrs = {
         "src": attr.label(allow_single_file = True),
     }
 )
-
-# TODO 3 research attr.output this is a major help towards sliming down custom rules
